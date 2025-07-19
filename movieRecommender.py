@@ -12,7 +12,7 @@ st.markdown("Find movies similar to your favorite ones using **content-based fil
 st.divider()
 
 # -------------------- DATA LOADING --------------------
-movies = pd.read_csv("dataset.csv")
+movies = pd.read_csv("Moviedataset.csv")
 import os
 import gdown
 
