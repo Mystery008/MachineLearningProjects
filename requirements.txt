@@ -3,5 +3,6 @@ streamlit-option-menu
 pandas
 numpy
 scikit-learn
+matplotlib
 gdown
 requests
