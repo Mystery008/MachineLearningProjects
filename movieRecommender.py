@@ -13,7 +13,21 @@ st.divider()
 
 # -------------------- DATA LOADING --------------------
 movies = pd.read_csv("dataset.csv")
-similarity = pickle.load(open("similarity.pkl", "rb"))
+import os
+import gdown
+
+SIMILARITY_FILE = "similarity.pkl"
+FILE_ID = "1odItYnuxRlj9tWCmLgwC9EXHI7SN_f3N"  # You'll add this once the upload finishes
+URL = f"https://drive.google.com/uc?id={FILE_ID}"
+
+# Download if missing
+if not os.path.exists(SIMILARITY_FILE):
+    with st.spinner("Downloading similarity matrix... This may take a minute."):
+        gdown.download(URL, SIMILARITY_FILE, quiet=False)
+
+with open(SIMILARITY_FILE, "rb") as f:
+    similarity = pickle.load(f)
+
 
 # -------------------- FUNCTION: Fetch Poster --------------------
 def fetch_poster(title):
