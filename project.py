@@ -69,7 +69,7 @@ elif selected == "Dataset":
         st.error("data.csv file not found. Please upload or check path.")
 
 elif selected == "Prediction Model":
-    st.title(""Predict: Should You Do a Masters?"")
+    st.title("Predict: Should You Do a Masters?")
     gate_input = st.selectbox("Select GATE Score", le_gate.classes_)
     salary_input = st.number_input("Enter current salary (INR)", value=500000)
 
