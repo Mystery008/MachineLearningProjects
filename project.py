@@ -63,7 +63,7 @@ elif selected == "About Model":
 elif selected == "Dataset":
     st.title("Uploaded Dataset (Masters_decison_dataset.csv)")
     try:
-        dataset_df = pd.read_csv("dataset.csv")
+        dataset_df = pd.read_csv("Masters_decision_dataset.csv")
         st.dataframe(dataset_df)
     except FileNotFoundError:
         st.error("data.csv file not found. Please upload or check path.")
