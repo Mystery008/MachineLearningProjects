@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load and prepare data
-model_df = pd.read_csv("dataset.csv")
+model_df = pd.read_csv("Masters_decision_dataset.csv")
 
 le_gate = LabelEncoder()
 model_df["GATE_Score"] = le_gate.fit_transform(model_df["GATE_Score"])
@@ -43,26 +43,25 @@ with st.sidebar:
 
 # Pages
 if selected == "Home":
-    st.subheader("👋 Welcome!")
+    st.subheader("Welcome!")
     st.write("Use the sidebar to explore the application.")
 
 elif selected == "About Model":
     st.title("📘 About the Model")
     st.markdown("""
-    ### 🎯 Goal
+    ### Goal:
     Predict whether a student should pursue a Master's degree based on:
     - GATE Score
     - Salary
 
-    ### 🧠 Model
+    ### Model:
     - Random Forest Classifier
-    - Trained on balanced_master_decision.csv
-
+    - Trained on masters_decision_data.csv
 
     """)
 
 elif selected == "Dataset":
-    st.title("📁 Uploaded Dataset (master_decison.csv)")
+    st.title("Uploaded Dataset (Masters_decison_dataset.csv)")
     try:
         dataset_df = pd.read_csv("dataset.csv")
         st.dataframe(dataset_df)
@@ -70,7 +69,7 @@ elif selected == "Dataset":
         st.error("data.csv file not found. Please upload or check path.")
 
 elif selected == "Prediction Model":
-    st.title("🤖 Predict: Should You Do a Master's?")
+    st.title("Predict: Should You Do a Master's?")
     gate_input = st.selectbox("Select GATE Score", le_gate.classes_)
     salary_input = st.number_input("Enter current salary (INR)", value=500000)
 
@@ -78,10 +77,10 @@ elif selected == "Prediction Model":
         gate_encoded = le_gate.transform([gate_input])[0]
         prediction = model.predict([[gate_encoded, salary_input]])
         result = le_master.inverse_transform(prediction)[0]
-        st.success(f"Prediction: You should {'🧑‍🎓 do' if result == 'Yes' else '🚫 not do'} a Master's.")
+        st.success(f"Prediction: You should {'🧑‍🎓 do' if result == 'Yes' else '🚫 Not do'} a Master's.")
 
 elif selected == "Graph":
-    st.title("📊 Visualize Data from master_decison.csv")
+    st.title("Visualize Data from master_decison_dataset.csv")
     feature = st.selectbox("Choose a feature", ["GATE_Score", "Salary", "Should_Do_Masters"])
 
     if feature == "GATE_Score":
