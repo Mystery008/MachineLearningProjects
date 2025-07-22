@@ -3,15 +3,15 @@ import pandas as pd
 import pickle
 import requests
 
-# -------------------- CONFIG --------------------
+
 st.set_page_config(page_title="Movie Recommender", layout="wide")
 
-# -------------------- TITLE & DESCRIPTION --------------------
+# Title and description
 st.title("🎬 Movie Recommender System")
 st.markdown("Find movies similar to your favorite ones using **content-based filtering**! 🍿")
 st.divider()
 
-# -------------------- DATA LOADING --------------------
+# Data loading
 movies = pd.read_csv("Moviedataset.csv")
 import os
 import gdown
@@ -29,7 +29,7 @@ with open(SIMILARITY_FILE, "rb") as f:
     similarity = pickle.load(f)
 
 
-# -------------------- FUNCTION: Fetch Poster --------------------
+# Function: Fetch Poster 
 def fetch_poster(title):
     api_key = "7b5cdd6e"  # Replace this with your real key
     url = f"http://www.omdbapi.com/?t={title}&apikey={api_key}"
@@ -44,11 +44,11 @@ def fetch_poster(title):
     return poster_url
 
 
-# -------------------- MOVIE SELECTION --------------------
+#Movie Selection
 st.markdown("### 🎞️ Select a Movie")
 selected_movie = st.selectbox("Choose a movie you like:", movies['title'].values)
 
-# -------------------- RECOMMENDATION LOGIC --------------------
+#Recommendation Logic
 def recommend(title):
     index = movies[movies['title'] == title].index[0]
     distances = sorted(list(enumerate(similarity[index])), key=lambda x: x[1], reverse=True)
@@ -60,7 +60,7 @@ def recommend(title):
         posters.append(fetch_poster(movie_title))
     return recommendations, posters
 
-# -------------------- DISPLAY RECOMMENDATIONS --------------------
+#Display Recommendation
 if st.button("Recommend 🎯"):
     names, posters = recommend(selected_movie)
 
