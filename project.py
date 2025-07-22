@@ -61,7 +61,7 @@ elif selected == "About Model":
     """)
 
 elif selected == "Dataset":
-    st.title("Uploaded Dataset (Masters_decison_dataset.csv)")
+    st.subheader("Uploaded Dataset (Masters_decison_dataset.csv)")
     try:
         dataset_df = pd.read_csv("Masters_decision_dataset.csv")
         st.dataframe(dataset_df)
