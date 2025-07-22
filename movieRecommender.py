@@ -17,7 +17,7 @@ import os
 import gdown
 
 SIMILARITY_FILE = "similarity.pkl"
-FILE_ID = "1odItYnuxRlj9tWCmLgwC9EXHI7SN_f3N"  # You'll add this once the upload finishes
+FILE_ID = "1odItYnuxRlj9tWCmLgwC9EXHI7SN_f3N" 
 URL = f"https://drive.google.com/uc?id={FILE_ID}"
 
 # Download if missing
@@ -31,7 +31,7 @@ with open(SIMILARITY_FILE, "rb") as f:
 
 # Function: Fetch Poster 
 def fetch_poster(title):
-    api_key = "7b5cdd6e"  # Replace this with your real key
+    api_key = "7b5cdd6e" 
     url = f"http://www.omdbapi.com/?t={title}&apikey={api_key}"
     response = requests.get(url).json()
 
