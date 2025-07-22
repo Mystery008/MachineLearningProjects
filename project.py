@@ -1,10 +1,10 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-import pandas as pd
-import matplotlib.pyplot as plt
 
 # Load and prepare data
 model_df = pd.read_csv("Masters_decision_dataset.csv")
